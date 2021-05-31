@@ -13,15 +13,23 @@ public class ScrabbleScorer {
     public ScrabbleScorer(){
         char[] tiles = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-        //TODO: initialize the array of individual letter scores.
-        int[] scores;
+        //initialize the array of individual letter scores.
+        int[] scores = new int[]{
+                1,3,2,1,4,2,4,1,8,5,1,3,
+                1,1,3,10,1,1,1,1,4,4,8,4,10
+        };
 
+        //create the `tileScores` map
         tileScores = new HashMap<>();
 
-        //TODO: create the `tileScores` map
-        // TODO: populate the `tileScores` map using hte tiles and `scores` array}
-    }
+        //populate the `tileScores` map using hte tiles and `scores` array}
+        for(int i =0; i < tiles.length; i++){
+            char tile = tiles[i];
+            int score = scores[i];
+            tileScores.put(tile,score);
+        }
 
+    }
 
 
     /*
@@ -29,13 +37,16 @@ public class ScrabbleScorer {
         If the character is not a letter, then 0 is returned.
     */
     public int ScoreForTile(char tile){
-        //TODO:Convert the tile to an uppercase Character
+        //Convert the tile to an uppercase Character
+        tile = Character.toUpperCase(tile);
 
         //TODO:Check if the `tileScores` map contains this tile
+        if(tileScores.containsKey(tile)){
 
-        //TODO:Get the tile from the `tileScores` map
-
-        return 0;
+            //TODO:Get the tile from the `tileScores` map
+        }else{
+            return 0;
+        }
     }
 
 
