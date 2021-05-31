@@ -77,7 +77,7 @@ public class ScrabbleScorer {
         int bestScore = 0;
         for(String word: words){
             int score = scoreForWord(word);
-            if(score > bestScore){
+            if(score > bestScore || bestWord == null){
                 bestWord = word;
                 bestScore = score;
             }
