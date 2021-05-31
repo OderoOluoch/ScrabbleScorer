@@ -36,14 +36,14 @@ public class ScrabbleScorer {
         Calculate the score for an individual letter tile.
         If the character is not a letter, then 0 is returned.
     */
-    public int ScoreForTile(char tile){
+    public int scoreForTile(char tile){
         //Convert the tile to an uppercase Character
         tile = Character.toUpperCase(tile);
 
-        //TODO:Check if the `tileScores` map contains this tile
+        //Check if the `tileScores` map contains this tile
         if(tileScores.containsKey(tile)){
-
-            //TODO:Get the tile from the `tileScores` map
+            //Get the tile from the `tileScores` map
+            return tileScores.get(tile);
         }else{
             return 0;
         }
@@ -56,9 +56,13 @@ public class ScrabbleScorer {
 
     public int scoreForWord(String word){
         char[] tiles = word.toCharArray();
+        //Calculate the total score of the tiles
+        int score =0;
+        for(char tile: tiles){
+            score+= scoreForTile(tile);
+        }
 
-        //TODO:Calculate the total score of the tiles
-        return 0;
+        return score;
     }
 
 
@@ -67,8 +71,17 @@ public class ScrabbleScorer {
     * or null if the list is empty
     */
     public String highestScoringWord(List<String> words){
-        //TODO: Find the word with the highest store
+        //Find the word with the highest store
 
-        return null;
+        String bestWord = null;
+        int bestScore = 0;
+        for(String word: words){
+            int score = scoreForWord(word);
+            if(score > bestScore){
+                bestWord = word;
+                bestScore = score;
+            }
+        }
+        return bestWord;
     }
 }
